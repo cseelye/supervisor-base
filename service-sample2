@@ -1,0 +1,18 @@
+#!/bin/bash
+set -eEuo pipefail
+
+echo "sample2 service started"
+
+function shutdown()
+{
+    echo "sample2 service shutting down"
+    exit 0
+}
+trap shutdown TERM INT HUP EXIT 
+
+sleep 1
+while true; do
+    echo "service2 still running"
+    sleep 10&
+    wait $!
+done

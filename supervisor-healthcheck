@@ -1,0 +1,5 @@
+#!/bin/bash
+set -eEuo pipefail
+
+# docker only wants to see exit status 0 or 1 for healthcheck processes, so exit 1 for any unhealthy status
+supervisorctl status all || exit 1

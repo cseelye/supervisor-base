@@ -1,0 +1,14 @@
+#!/bin/bash
+set -eEuo pipefail
+
+echo "sample1 service started"
+
+function shutdown()
+{
+    echo "sample1 service shutting down"
+    exit 0
+}
+trap shutdown TERM INT HUP EXIT 
+
+sleep infinity&
+wait $!
